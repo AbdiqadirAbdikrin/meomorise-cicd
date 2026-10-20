@@ -1,0 +1,19 @@
+name: ci pipeline
+on:  
+  push: 
+    branches:
+        - main
+      
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: check_docker
+              run: docker --version
+            - name: project_name
+              run: echo "ci pipeline"
+            - name: check_git
+              run: git --version
+
