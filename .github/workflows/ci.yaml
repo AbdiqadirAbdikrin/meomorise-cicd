@@ -21,11 +21,11 @@ jobs:
             - name: check_git
               run: git --version
 
-check:
-      if: ${{ test.result == 'success' }}
-      runs-on: ubuntu-latest
-      needs: deploy
-      steps:
+    check:
+        if: ${{ test.result == 'success' }}
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
             - uses: actions/checkout@v4
             - name: check docker image
               run: |
