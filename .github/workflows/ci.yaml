@@ -57,24 +57,23 @@ jobs:
                     echo docker run -d --name ${{ env.app_name }}_container ${{ env.app_name }}:${{ env.app_version }}
     
 
+                    
     prepare:
         runs-on: ubuntu-latest
         needs: deploy
         outputs:
-            image_tag: ${{ steps.version.outputs.tag}}
-        steps:
-            - uses: actions/checkout@v4
+            image_tag: ${{ steps.version.outputs.tag }}
+        steps: 
             - name: prepare docker image
               id: version
               run: |
-                    echo "tag=${github.sha}" >> $GITHUB_OUTPUT
+                    echo "tag=1.0.0" >> $GITHUB_ENV
 
 
-    buildTaggedImage:
+    buildImageTag:
         runs-on: ubuntu-latest
         needs: prepare
         steps:
-            - uses: actions/checkout@v4
-            - name: build docker image with tag
+            - name: build docker image tag
               run: |
-                  echo "docker build ${{ env.app_name }}:${{ needs.prepare.outputs.image_tag }} ."
+                   echo "building docker image with tag ${{ needs.prepare.outputs.image_tag }}"
