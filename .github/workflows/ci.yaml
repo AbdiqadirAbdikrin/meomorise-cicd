@@ -119,6 +119,9 @@ jobs:
               run: |
                     echo "app_name: ${{env.app_name}}"
                     echo "app_version: ${{env.app_version}}"
+            - name: print git commit sha
+              run: |
+                    echo "git commit sha: ${{ github.sha}}"
 
     deployNew:
         runs-on: ubuntu-latest
