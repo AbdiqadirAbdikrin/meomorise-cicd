@@ -23,16 +23,6 @@ jobs:
 
 
 
-    # build:
-    #     env: 
-    #         app_name: my_app
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - uses: actions/checkout@v4
-    #         - name: show config
-    #           run: |
-    #             echo "app_name: ${{ env.app_name }}"
-
 
 
     build: 
