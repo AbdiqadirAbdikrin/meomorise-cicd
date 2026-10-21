@@ -27,12 +27,14 @@ jobs:
 
     build: 
         runs-on: ubuntu-latest
+        env: 
+            app_name: my_app
         needs: test
         steps:
             - uses: actions/checkout@v4
             - name: build docker image
               run: |
-                   echo docker build -t my_app:${{ env.app_version }} .
+                   echo docker build -t ${{ env.app_name }}:${{ env.app_version }} .
 
 
     deploy:
@@ -42,6 +44,6 @@ jobs:
             - uses: actions/checkout@v4
             - name: deploy docker image
               run: |
-                    echo docker run -d --name my_app_container my_app:${{ env.app_version }}
+                    echo docker run -d --name ${{ env.app_name }}_container ${{ env.app_name }}:${{ env.app_version }}
 
 
